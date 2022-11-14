@@ -9,57 +9,35 @@ import { BiRupee } from 'react-icons/bi'
 import { useNavigate, useParams } from 'react-router-dom'
 import { unitsMap } from './data'
 
-export default function Compare() {
+export default function Compare({ data, dispatch }) {
   // Navigation
   const navigate = useNavigate()
   const { id } = useParams()
 
-  const [data, setData] = useState([
-    {
-      item: 1,
-      quantity: '',
-      unit: '',
-      price: '',
-    },
-    {
-      item: 2,
-      quantity: '',
-      unit: '',
-      price: '',
-    },
-  ])
-
-  const handleClick = (e) => {
+  // Adding one more
+  const handleAdd = (e) => {
     e.preventDefault()
-    setData((prev) => [
-      ...prev,
-      {
-        item: data.length + 1,
-        quantity: '',
-        unit: '',
-        price: '',
-      },
-    ])
+    dispatch({ type: 'ADD_MORE' })
   }
 
+  // Removing Data
   const handleRemove = (e, i) => {
     e.preventDefault()
-    const newData = data.filter((product) => product.item !== i)
-    console.log(newData)
-    setData(newData)
+    dispatch({ type: 'REMOVE', payload: i })
   }
 
+  // Changing Fields
   const handleChange = (e, i) => {
     const { name, value } = e.target
-    const newData = [...data]
-    newData[i][name] = value
-    setData(newData)
+    dispatch({ type: 'CHANGE', payload: { name, value, i } })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate('result', { state: data })
   }
+
+  console.log('yeh data hai', data)
 
   return (
     <div className="compare">
@@ -121,7 +99,7 @@ export default function Compare() {
         ))}
         <div className="btnDivWrapper">
           <div className="btnDiv">
-            <button onClick={handleClick}>
+            <button onClick={handleAdd}>
               <MdAdd /> Add More
             </button>
             <button type="submit">
