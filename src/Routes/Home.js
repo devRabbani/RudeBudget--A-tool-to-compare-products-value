@@ -1,22 +1,35 @@
 import Lottie from 'lottie-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MdNavigateNext } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import homeAnimation from '../animations/productAnimation'
+import { FcStatistics } from 'react-icons/fc'
 
-export default function Home() {
+export default function Home({ dispatch }) {
   const navigate = useNavigate()
   const [type, setType] = useState('')
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch({ type: 'RESET' })
     navigate(`/${type}`)
   }
 
   return (
     <div className="home">
-      <div>
-        <Lottie loop animationData={homeAnimation} />
+      <div className="homeBox">
+        <div className="modal">
+          {isLoaded ? null : <FcStatistics className="modelIcon" />}
+          <Lottie
+            style={{ display: isLoaded ? 'block' : 'none' }}
+            loop
+            onLoadedImages={() => console.log('LoadedImg')}
+            onDataReady={() => console.log('dataReady')}
+            onDOMLoaded={() => setIsLoaded(true)}
+            animationData={homeAnimation}
+          />
+        </div>
         <form onSubmit={handleSubmit} className="homeForm">
           <select
             required
@@ -30,7 +43,10 @@ export default function Home() {
             <option value="distance">Distance</option>
             <option value="common">Common</option>
           </select>
-          <button type="submit">Next<MdNavigateNext/></button>
+          <button type="submit">
+            Next
+            <MdNavigateNext />
+          </button>
         </form>
       </div>
     </div>

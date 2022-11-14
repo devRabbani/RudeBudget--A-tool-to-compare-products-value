@@ -11,6 +11,9 @@ export default function Modal({ setIsModal }) {
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum,
+          <a href="https://storyset.com/online">
+            Online illustrations by Storyset
+          </a>
           modi saepe! Odit, perspiciatis officiis? Blanditiis quasi doloremque
           numquam voluptate provident, natus quam voluptatum. Atque natus beatae
           provident, distinctio perspiciatis eligendi! Vitae cupiditate nemo

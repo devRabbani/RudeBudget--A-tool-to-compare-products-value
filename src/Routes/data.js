@@ -60,31 +60,31 @@ export const unitsMap = {
   common: [
     {
       name: 'Kilo',
-      valu: 'k',
+      value: 'k',
     },
     {
       name: 'Hecto',
-      valu: 'h',
+      value: 'h',
     },
     {
       name: 'Deca',
-      valu: 'da',
+      value: 'da',
     },
     {
       name: 'Unit (gm,ltr,m)',
-      valu: 'u',
+      value: 'u',
     },
     {
       name: 'Deci',
-      valu: 'd',
+      value: 'd',
     },
     {
       name: 'Centi',
-      valu: 'c',
+      value: 'c',
     },
     {
       name: 'Milli',
-      valu: 'm',
+      value: 'm',
     },
   ],
 }

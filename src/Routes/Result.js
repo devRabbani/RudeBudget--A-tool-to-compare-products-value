@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import resultAnimation from '../animations/resultAnimation.json'
-import Lottie from 'lottie-react'
 import { unitDisplay, unitNorms } from './data'
 
-export default function Result() {
+export default function Result({ data }) {
   // Router
-  const { state: data } = useLocation()
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -18,7 +15,7 @@ export default function Result() {
   const isQty = id === 'qty'
   // UseEffect if no state value found redirect
   useEffect(() => {
-    if (!data) {
+    if (!data.length) {
       navigate('/')
     }
   }, [data, navigate])
@@ -54,12 +51,8 @@ export default function Result() {
 
   return (
     <div className="result">
-      {console.log(isLoading, result)}
       {isLoading ? (
-        <div className="loadingResult">
-          <Lottie loop animationData={resultAnimation} />
-          <p>Please Wait Calculating</p>
-        </div>
+        <p className="loadingResult">Please Wait Calculating</p>
       ) : (
         <div className="resultBox">
           <p className="mainText">
@@ -90,7 +83,7 @@ export default function Result() {
             </thead>
             <tbody>
               {result.map((item) => (
-                <tr>
+                <tr key={item.item}>
                   <td>Item {item.item}</td>
                   <td>
                     {item.quantity}

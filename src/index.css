@@ -29,10 +29,48 @@ a {
 }
 
 #root {
-  border: 7px solid var(--color-blue-2);
   min-height: 100%;
   display: grid;
-  grid-template-rows: 60px 1fr 40px;
+  grid-template-rows: 67px 1fr 47px;
+}
+
+/* Border */
+.topBorder,
+.bottomBorder,
+.leftBorder,
+.rightBorder {
+  background-color: var(--color-blue-2);
+  position: fixed;
+  z-index: 999;
+}
+
+.topBorder,
+.bottomBorder {
+  height: 7px;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+.leftBorder,
+.rightBorder {
+  height: 100%;
+  width: 7px;
+  top: 0;
+  bottom: 0;
+}
+.topBorder {
+  top: 0;
+}
+.bottomBorder {
+  bottom: 0;
+}
+
+.leftBorder {
+  left: 0;
+}
+
+.rightBorder {
+  right: 0;
 }
 
 select,
@@ -40,6 +78,7 @@ input {
   font-size: 1.3rem;
   border-radius: 7px;
   border: 1px solid grey;
+  background-color: transparent;
 }
 select {
   padding: 8px 12px;
@@ -48,7 +87,8 @@ select {
 input:focus,
 select:focus {
   border-color: var(--color-blue-2);
-  outline: none;
+  outline: 1px solid var(--color-blue-2);
+  /* outline: none; */
   color: var(--color-blue-2);
 }
 input::placeholder {
@@ -70,7 +110,7 @@ button {
 }
 
 .container {
-  width: 92%;
+  width: 90%;
   max-width: 1400px;
   margin-inline: auto;
   min-height: 100%;
@@ -82,6 +122,29 @@ button {
   place-items: center;
   min-height: 100%;
 }
+
+.homeBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -30px;
+  gap: 10px;
+}
+.homeBox .modal {
+  font-size: 12rem;
+  width: 337px;
+  height: 246.13px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.homeBox .modelIcon {
+  /* margin: 0 auto -80px; */
+  margin-bottom: 15px;
+  align-self: flex-end;
+}
+
 .homeForm {
   width: 90%;
   margin-inline: auto;
@@ -119,7 +182,7 @@ footer a {
 }
 nav {
   /* height: 50px; */
-  width: 92%;
+  width: 90%;
   max-width: 1400px;
   margin-inline: auto;
   font-size: 1.8rem;
@@ -135,6 +198,7 @@ nav svg:last-of-type {
 nav svg {
   margin-top: -5px;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 footer {
@@ -145,20 +209,20 @@ footer {
 /* Modal */
 .modalWrapper {
   background-color: #f1dcb1;
-  z-index: 999;
+  z-index: 99;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  border: 7px solid var(--color-blue-2);
+  height: 100%;
 }
 .modalDiv {
-  width: 92%;
+  width: 90%;
   max-width: 1400px;
   margin-inline: auto;
 }
 .modalNav {
-  height: 60px;
+  height: 67px;
+  padding-inline: 7px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -223,20 +287,22 @@ footer {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 7px;
   /* background-color: rgba(255, 255, 255, 0.279);
   backdrop-filter: blur(3px); */
   padding-block: 10px;
-  border-bottom: 7px solid var(--color-blue-2);
-  border-right: 7px solid var(--color-blue-2);
-  border-left: 7px solid var(--color-blue-2);
+}
+
+.btnDiv button {
+  font-size: 1.4rem;
+  padding-block: 9px;
 }
 
 .btnDiv {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  width: 92%;
+  width: 90%;
   margin-inline: auto;
 }
 
@@ -276,14 +342,10 @@ footer {
 }
 
 /* Result */
-.result .loadingResult {
-  width: min(400px, 70%);
-  margin-inline: auto;
-  margin-top: 20vh;
-}
-.loadingResult p {
-  font-size: 1.2rem;
+.loadingResult {
+  font-size: 1.3rem;
   font-weight: 300;
+  margin-top: 40vh;
   text-align: center;
 }
 
