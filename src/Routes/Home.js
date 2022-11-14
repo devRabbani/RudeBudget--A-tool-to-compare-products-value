@@ -9,16 +9,15 @@ import { motion } from 'framer-motion'
 const mainVariant = {
   initial: {
     opacity: 0,
-    y: 200,
-    scale: 0.4,
+    y: '50vh',
   },
   animate: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      y: { duration: 0.2 },
-      scale: { duration: 0.2, delay: 0.6 },
+      type: 'spring',
+      mass: 0.35,
+      damping: 8,
     },
   },
   exit: {
