@@ -45,7 +45,9 @@ export default function Modal({ setIsModal }) {
               CanWeBe!
             </a>
           </p>
-          <p>For bug report, suggestion contact CanWeBe!</p>
+          <p className="bugReport">
+            For bug report or suggestion contact CanWeBe!
+          </p>
 
           <h3>Steps:</h3>
           <p>
@@ -61,11 +63,23 @@ export default function Modal({ setIsModal }) {
             </ol>
           </p>
           <h3>Credits:</h3>
-          <p>
-            <a href="https://storyset.com/online">
-              Online illustrations by Storyset
-            </a>
-          </p>
+          <ul>
+            <li>
+              <a href="https://storyset.com/online">
+                Online illustrations by Storyset
+              </a>
+            </li>
+            <li>
+              <a href="https://storyset.com/online">
+                Online illustrations by Storyset
+              </a>
+            </li>
+            <li>
+              <a href="https://storyset.com/online">
+                Online illustrations by Storyset
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </motion.div>

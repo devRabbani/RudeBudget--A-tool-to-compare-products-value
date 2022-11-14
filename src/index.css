@@ -115,7 +115,7 @@ button {
 
 .container {
   width: 90%;
-  max-width: 1400px;
+  max-width: 850px;
   margin-inline: auto;
   min-height: 100%;
 }
@@ -134,6 +134,7 @@ button {
   align-items: center;
   margin-top: -45px;
   gap: 10px;
+  max-width: 600px;
 }
 .homeBox .modal {
   font-size: 12rem;
@@ -197,7 +198,7 @@ footer a {
 nav {
   /* height: 50px; */
   width: 90%;
-  max-width: 1400px;
+  max-width: 850px;
   margin-inline: auto;
   font-size: 1.8rem;
   font-weight: 600;
@@ -233,27 +234,62 @@ footer {
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
+  padding-bottom: 50px;
+  overflow-y: auto;
 }
 .modalDiv {
   width: 90%;
-  max-width: 1400px;
+  max-width: 850px;
   margin-inline: auto;
 }
 .modalNav {
   height: 76px;
   display: grid;
+  background-color: #e5ebff;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   font-size: 1.8rem;
   font-weight: 600;
   color: #0c3896;
+  position: sticky;
+  top: 0;
 }
 
 .modalNav .logo {
   text-align: center;
 }
-.modalBody h3 {
-  margin-top: 10px;
+
+.modalBody h3:not(:first-of-type) {
+  margin-top: 18px;
+}
+.modalBody p {
+  margin: 9px 0;
+  font-size: 1.1rem;
+  line-height: 24px;
+}
+
+.modalBody p a {
+  font-weight: 600;
+  color: orangered;
+}
+
+.modalBody .bugReport {
+  font-weight: 500;
+  color: grey;
+}
+
+.modalBody li {
+  font-size: 1rem;
+  margin-block: 5px;
+  line-height: 23px;
+}
+.modalBody ul {
+  color: rgb(52, 29, 135);
+}
+.modalBody ol,
+.modalBody ul {
+  padding-left: 17px;
 }
 
 /* Compare */
@@ -269,8 +305,7 @@ footer {
 
 .compare form {
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   /* gap: 20px; */
   overflow: hidden;
   border: 1px solid grey;
@@ -320,6 +355,8 @@ footer {
   /* background-color: rgba(255, 255, 255, 0.279);
   backdrop-filter: blur(3px); */
   padding-block: 10px;
+  max-width: 780px;
+  margin-inline: auto;
 }
 
 .btnDiv button {
@@ -431,4 +468,62 @@ tr:nth-child(even) {
 }
 .color2 {
   color: var(--color-violet);
+}
+
+/* Media Query */
+@media screen and (min-width: 600px) {
+  #root {
+    grid-template-rows: 86px 1fr 55px;
+  }
+  .modalNav {
+    height: 86px;
+  }
+
+  .homeBox {
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .btnDivWrapper {
+    padding-block: 20px;
+  }
+  #root {
+    grid-template-rows: 90px 1fr 65px;
+  }
+  .modalNav {
+    height: 90px;
+  }
+  .homeBox {
+    margin-top: -25px;
+  }
+  .compare form {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+  }
+  .itemDiv {
+    margin: 0;
+  }
+  .btnDiv {
+    gap: 20px;
+  }
+
+  .modalBody {
+    margin-top: 40px;
+  }
+  .modalBody h3 {
+    margin-bottom: 10px;
+  }
+
+  .topBorder,
+  .bottomBorder {
+    height: 10px;
+  }
+  .leftBorder,
+  .rightBorder {
+    width: 10px;
+  }
 }
