@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 const mainVariant = {
   initial: {
     opacity: 0,
-    y: 100,
+    y: 200,
     scale: 0.4,
   },
   animate: {
@@ -17,8 +17,8 @@ const mainVariant = {
     y: 0,
     scale: 1,
     transition: {
-      y: { duration: 0.4 },
-      scale: { delay: 0.47 },
+      y: { duration: 0.2 },
+      scale: { duration: 0.2, delay: 0.6 },
     },
   },
   exit: {

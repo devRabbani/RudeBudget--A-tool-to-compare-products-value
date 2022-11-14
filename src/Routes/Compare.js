@@ -13,7 +13,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 const mainVariant = {
   initial: {
     opacity: 0,
-    x: '60vw',
+    x: 200,
   },
   animate: {
     opacity: 1,
@@ -52,7 +52,6 @@ const btnVariant2 = {
     backgroundColor: '#525252',
     y: isMax ? 0 : -2,
     x: isMax ? [3, -3, 3, -3, 3, -3, 3, -3, 0] : 0,
-   
   }),
   hover: { backgroundColor: '#6a6a6a', gap: '15px' },
 }

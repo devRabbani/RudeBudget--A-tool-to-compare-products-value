@@ -36,7 +36,7 @@ export default function Pages() {
       <Border />
       <Nav isHome={isHome} />
       <main className="container">
-        <AnimatePresence initial={false} exitBeforeEnter>
+        <AnimatePresence exitBeforeEnter>
           <Routes key={pathname} location={location}>
             <Route path="/" element={<Home dispatch={dispatch} />} />
             <Route

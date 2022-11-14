@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 const mainVariant = {
   initial: {
     opacity: 0,
-    x: '60vw',
+    x: 200,
   },
   animate: {
     opacity: 1,
