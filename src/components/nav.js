@@ -2,6 +2,16 @@ import { useState } from 'react'
 import { MdHelp, MdHelpOutline, MdHighlightOff, MdWest } from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 import Modal from './modal'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const btnVariant = {
+  hover: {
+    color: '#f51919',
+  },
+  tap: {
+    x: -10,
+  },
+}
 
 export default function Nav({ isHome }) {
   const navigate = useNavigate()
@@ -9,11 +19,29 @@ export default function Nav({ isHome }) {
   return (
     <>
       <nav>
-        {!isHome ? <MdWest onClick={() => navigate(-1)} /> : <div />}
+        {!isHome ? (
+          <motion.span
+            variants={btnVariant}
+            whileHover="hover"
+            whileTap="tap"
+            className="navIcon"
+          >
+            <MdWest onClick={() => navigate(-1)} />
+          </motion.span>
+        ) : (
+          <div />
+        )}
         <Link to="/">RudeBudget</Link>
-        <MdHelpOutline onClick={() => setIsModal(true)} />
+        <motion.span
+          whileTap={{ scale: 0.9 }}
+          className="navIcon navMarginLeft"
+        >
+          <MdHelpOutline onClick={() => setIsModal(true)} />
+        </motion.span>
       </nav>
-      {isModal ? <Modal setIsModal={setIsModal} /> : null}
+      <AnimatePresence initial={false}>
+        {isModal ? <Modal setIsModal={setIsModal} /> : null}
+      </AnimatePresence>
     </>
   )
 }

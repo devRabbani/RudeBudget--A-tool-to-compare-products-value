@@ -15,6 +15,7 @@ const mainVariant = {
   exit: {
     opacity: 0,
     x: '90vw',
+    transition: { ease: 'easeInOut' },
   },
 }
 
@@ -42,18 +43,20 @@ export default function Result({ data }) {
       let newData
       if (isQty) {
         newData = data
-          .map((item) => {
+          .map((item, i) => {
             return {
               ...item,
+              item: i,
               rank: item.price / item.quantity,
             }
           })
           .sort((a, b) => a.rank - b.rank)
       } else {
         newData = data
-          .map((item) => {
+          .map((item, i) => {
             return {
               ...item,
+              item: i,
               rank: item.price / (item.quantity * unitNorms[item.unit]),
             }
           })
@@ -81,7 +84,7 @@ export default function Result({ data }) {
       ) : result.length > 0 ? (
         <div className="resultBox">
           <p className="mainText">
-            <span className="bold">Item {result[0].item}</span> ,{' '}
+            <span className="bold">Item {result[0].item + 1}</span> ,{' '}
             <span className="bold">
               {result[0].quantity}
               {isQty ? 'Units' : unitDisplay[result[0].unit][id]}
@@ -109,7 +112,7 @@ export default function Result({ data }) {
             <tbody>
               {result.map((item) => (
                 <tr key={item.item}>
-                  <td>Item {item.item}</td>
+                  <td>Item {item.item + 1}</td>
                   <td>
                     {item.quantity}
                     {isQty ? 'Unit' : unitDisplay[item.unit][id]}

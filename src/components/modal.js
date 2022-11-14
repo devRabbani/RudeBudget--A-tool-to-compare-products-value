@@ -1,38 +1,73 @@
 import { MdCancel } from 'react-icons/md'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const mainVariant = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0, transition: { ease: 'linear' } },
+}
 
 export default function Modal({ setIsModal }) {
   return (
-    <div className="modalWrapper">
+    <motion.div
+      variants={mainVariant}
+      animate="animate"
+      initial="initial"
+      exit="exit"
+      className="modalWrapper"
+    >
       <div className="modalDiv">
         <div className="modalNav">
           <div></div>
           <p className="logo">RudeBudget</p>
-          <MdCancel onClick={() => setIsModal(false)} />
+          <motion.span
+            whileTap={{ scale: 0.9, color: '#bc2929' }}
+            className="navIcon navMarginLeft"
+          >
+            <MdCancel onClick={() => setIsModal(false)} />
+          </motion.span>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum,
-          <a href="https://storyset.com/online">
-            Online illustrations by Storyset
-          </a>
-          modi saepe! Odit, perspiciatis officiis? Blanditiis quasi doloremque
-          numquam voluptate provident, natus quam voluptatum. Atque natus beatae
-          provident, distinctio perspiciatis eligendi! Vitae cupiditate nemo
-          quos incidunt quasi placeat sit itaque veritatis. Modi, maiores
-          obcaecati aliquam est earum magni, iure beatae distinctio, id eos
-          suscipit fuga quo? Explicabo enim rerum eaque soluta. Deserunt ad,
-          ipsam quo incidunt non dolorum magni in culpa numquam alias!
-          Doloremque cupiditate nihil illo sapiente rerum. Quia maiores ad
-          consequatur vero iure, neque aliquam? Explicabo accusamus facilis hic.
-          Quisquam odit autem veniam doloribus similique consequatur illum quas
-          alias consectetur ea temporibus nemo nihil porro aliquid ipsam
-          tempora, voluptates assumenda unde tempore recusandae fugit excepturi
-          error sed in. Earum. Error, sed exercitationem, quisquam totam tempora
-          voluptatibus ipsa doloremque, veritatis dolore ducimus esse cumque.
-          Placeat voluptates tempore enim incidunt doloribus sunt, accusantium
-          expedita! Tempore eligendi doloribus facilis commodi laborum
-          assumenda.
-        </p>
+        <div className="modalBody">
+          <h3>Info:</h3>
+          <p>
+            This app will help users to compare products value and quantity.
+            Basically it will give you the best profitable products among the
+            compared list. Eg: 255gm Butter for 20₹ or 1.2Kg Butter for 460₹
+            which one is profitable??
+          </p>
+          <p>
+            This app is developed by{' '}
+            <a
+              href="http://canwebe.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CanWeBe!
+            </a>
+          </p>
+          <p>For bug report, suggestion contact CanWeBe!</p>
+
+          <h3>Steps:</h3>
+          <p>
+            <ol>
+              <li>First choose product type. (Like weight,distance)</li>
+              <li>
+                After that add item quantity ,price and unit . You can choose
+                diffrent units from the select option.
+              </li>
+              <li>You can add or compare upto 5 items</li>
+              <li>Now just click compare, Finish</li>
+              <li>Enjoy.</li>
+            </ol>
+          </p>
+          <h3>Credits:</h3>
+          <p>
+            <a href="https://storyset.com/online">
+              Online illustrations by Storyset
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

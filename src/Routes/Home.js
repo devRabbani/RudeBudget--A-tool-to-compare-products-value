@@ -17,12 +17,14 @@ const mainVariant = {
     y: 0,
     scale: 1,
     transition: {
-      scale: { delay: 0.55 },
+      y: { duration: 0.4 },
+      scale: { delay: 0.47 },
     },
   },
   exit: {
     opacity: 0,
     scale: 0,
+    transition: { ease: 'easeInOut' },
   },
 }
 
@@ -33,6 +35,11 @@ const lottieVariant = {
   animate: (isLoaded) => ({
     opacity: isLoaded ? 1 : 0,
   }),
+}
+
+const btnVariant = {
+  tap: { backgroundColor: '#1141a9', gap: '12px' },
+  hover: { backgroundColor: '#1e56cf', y: 2 },
 }
 
 export default function Home({ dispatch }) {
@@ -60,7 +67,6 @@ export default function Home({ dispatch }) {
             variants={lottieVariant}
             animate="animate"
             initial="initial"
-            exit="exit"
             custom={isLoaded}
           >
             <Lottie
@@ -85,10 +91,15 @@ export default function Home({ dispatch }) {
             <option value="distance">Distance</option>
             <option value="common">Common</option>
           </select>
-          <button type="submit">
+          <motion.button
+            variants={btnVariant}
+            whileTap="tap"
+            whileHover="hover"
+            type="submit"
+          >
             Next
             <MdNavigateNext />
-          </button>
+          </motion.button>
         </form>
       </div>
     </motion.div>

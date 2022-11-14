@@ -24,6 +24,7 @@ body {
   font-family: 'Anybody', cursive;
   position: relative;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -204,14 +205,19 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
-
-nav svg:last-of-type {
+nav a {
+  text-align: center;
+}
+.navMarginLeft {
   margin-left: auto;
 }
-nav svg {
+
+.navIcon {
   margin-top: -4px;
   cursor: pointer;
   font-size: 2.5rem;
+  display: flex;
+  align-items: center;
 }
 
 footer {
@@ -221,7 +227,7 @@ footer {
 
 /* Modal */
 .modalWrapper {
-  background-color: #f1dcb1;
+  background-color: #e5ebff;
   z-index: 99;
   position: fixed;
   top: 0;
@@ -242,10 +248,12 @@ footer {
   font-weight: 600;
   color: #0c3896;
 }
-.modalNav svg {
-  margin-left: auto;
-  margin-top: -4px;
-  font-size: 2.5rem;
+
+.modalNav .logo {
+  text-align: center;
+}
+.modalBody h3 {
+  margin-top: 10px;
 }
 
 /* Compare */
@@ -261,13 +269,20 @@ footer {
 
 .compare form {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+  overflow: hidden;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 7px;
 }
 
 .compare .itemDiv {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px 0;
+  margin: 10px 0;
 }
 .itemDiv label {
   font-weight: 500;
@@ -327,6 +342,10 @@ footer {
   background-color: grey;
   color: white;
 }
+.btnDiv button:nth-child(1):disabled {
+  background-color: #de3838 !important;
+}
+
 .btnDiv button:nth-child(2) {
   background-color: var(--color-blue-2);
   color: white;

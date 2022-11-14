@@ -4,7 +4,7 @@ export default function MainReducer(state, action) {
       return [
         ...state,
         {
-          item: state.length + 1,
+          item: new Date().getTime(),
           quantity: '',
           unit: '',
           price: '',
@@ -12,6 +12,7 @@ export default function MainReducer(state, action) {
       ]
     case 'REMOVE':
       const newData = state.filter((product) => product.item !== action.payload)
+
       return newData
     case 'CHANGE':
       const changeData = [...state]
