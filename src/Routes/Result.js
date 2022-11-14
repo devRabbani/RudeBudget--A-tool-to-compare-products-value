@@ -1,6 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { unitDisplay, unitNorms } from './data'
+import { motion } from 'framer-motion'
+
+const mainVariant = {
+  initial: {
+    opacity: 0,
+    x: '60vw',
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: {
+    opacity: 0,
+    x: '90vw',
+  },
+}
 
 export default function Result({ data }) {
   // Router
@@ -15,7 +31,7 @@ export default function Result({ data }) {
   const isQty = id === 'qty'
   // UseEffect if no state value found redirect
   useEffect(() => {
-    if (!data.length) {
+    if (!data[0].price) {
       navigate('/')
     }
   }, [data, navigate])
@@ -46,14 +62,23 @@ export default function Result({ data }) {
       setResult(newData)
       setIsLoading(false)
     }
-    handleResult()
-  }, [data])
+    if (data[0].price) {
+      handleResult()
+    }
+  }, [])
 
   return (
-    <div className="result">
+    <motion.div
+      variants={mainVariant}
+      animate="animate"
+      initial="initial"
+      exit="exit"
+      className="result"
+    >
+      {console.log(result)}
       {isLoading ? (
         <p className="loadingResult">Please Wait Calculating</p>
-      ) : (
+      ) : result.length > 0 ? (
         <div className="resultBox">
           <p className="mainText">
             <span className="bold">Item {result[0].item}</span> ,{' '}
@@ -96,7 +121,7 @@ export default function Result({ data }) {
             </tbody>
           </table>
         </div>
-      )}
-    </div>
+      ) : null}
+    </motion.div>
   )
 }

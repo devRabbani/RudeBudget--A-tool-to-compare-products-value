@@ -7,6 +7,7 @@ import Result from './Routes/Result'
 import Border from './components/border'
 import { useReducer } from 'react'
 import MainReducer from './reducers/mainReducer'
+import { AnimatePresence } from 'framer-motion'
 
 const INITIAL_STATE = [
   {
@@ -24,7 +25,8 @@ const INITIAL_STATE = [
 ]
 
 export default function Pages() {
-  const { pathname } = useLocation()
+  const location = useLocation()
+  const pathname = location.pathname
   const isHome = pathname === '/'
   // States and reducer
   const [state, dispatch] = useReducer(MainReducer, INITIAL_STATE)
@@ -34,17 +36,19 @@ export default function Pages() {
       <Border />
       <Nav isHome={isHome} />
       <main className="container">
-        <Routes>
-          <Route path="/" element={<Home dispatch={dispatch} />} />
-          <Route
-            path="/:id"
-            element={<Compare data={state} dispatch={dispatch} />}
-          />
-          <Route
-            path="/:id/result"
-            element={<Result data={state} dispatch={dispatch} />}
-          />
-        </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes key={pathname} location={location}>
+            <Route path="/" element={<Home dispatch={dispatch} />} />
+            <Route
+              path="/:id"
+              element={<Compare data={state} dispatch={dispatch} />}
+            />
+            <Route
+              path="/:id/result"
+              element={<Result data={state} dispatch={dispatch} />}
+            />
+          </Routes>
+        </AnimatePresence>
       </main>
       {isHome ? <Footer /> : null}
     </>

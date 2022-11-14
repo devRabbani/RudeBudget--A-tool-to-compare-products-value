@@ -16,11 +16,14 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  overflow-x: hidden;
 }
 
 body {
   height: 100%;
   font-family: 'Anybody', cursive;
+  position: relative;
+  overflow-x: hidden;
 }
 
 a {
@@ -31,7 +34,7 @@ a {
 #root {
   min-height: 100%;
   display: grid;
-  grid-template-rows: 67px 1fr 47px;
+  grid-template-rows: 76px 1fr 48px;
 }
 
 /* Border */
@@ -128,7 +131,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -30px;
+  margin-top: -45px;
   gap: 10px;
 }
 .homeBox .modal {
@@ -140,10 +143,20 @@ button {
   justify-content: center;
 }
 .homeBox .modelIcon {
-  /* margin: 0 auto -80px; */
   margin-bottom: 15px;
   align-self: flex-end;
+  filter: blur(5px);
 }
+/* .modelSvg {
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 1s ease-in-out;
+}
+
+.modelSvg.active {
+  opacity: 1;
+  transform: scaleX(1);
+} */
 
 .homeForm {
   width: 90%;
@@ -196,9 +209,9 @@ nav svg:last-of-type {
   margin-left: auto;
 }
 nav svg {
-  margin-top: -5px;
+  margin-top: -4px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 footer {
@@ -221,8 +234,7 @@ footer {
   margin-inline: auto;
 }
 .modalNav {
-  height: 67px;
-  padding-inline: 7px;
+  height: 76px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -232,13 +244,15 @@ footer {
 }
 .modalNav svg {
   margin-left: auto;
-  margin-top: -5px;
+  margin-top: -4px;
+  font-size: 2.5rem;
 }
 
 /* Compare */
 
 .compare {
   padding: 10px 0 40px;
+  overflow-x: hidden;
 }
 .compare h3 {
   text-align: center;

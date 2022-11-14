@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   MdAdd,
   MdCompareArrows,
@@ -8,8 +8,43 @@ import {
 import { BiRupee } from 'react-icons/bi'
 import { useNavigate, useParams } from 'react-router-dom'
 import { unitsMap } from './data'
+import { motion } from 'framer-motion'
+
+const mainVariant = {
+  initial: {
+    opacity: 0,
+    x: '60vw',
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: {
+    opacity: 0,
+    x: '-90vw',
+  },
+}
+const btnDivVariant = {
+  initial: {
+    opacity: 0,
+    y: 50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: -100,
+  },
+}
 
 export default function Compare({ data, dispatch }) {
+  // Ref
+  const btnRef = useRef()
   // Navigation
   const navigate = useNavigate()
   const { id } = useParams()
@@ -37,77 +72,93 @@ export default function Compare({ data, dispatch }) {
     navigate('result', { state: data })
   }
 
-  console.log('yeh data hai', data)
-
   return (
-    <div className="compare">
-      <h3>Add items to compare</h3>
-      <form onSubmit={handleSubmit}>
-        {data.map((item, i) => (
-          <div key={item.item} className="itemDiv">
-            <div className="twoCol">
-              <label>Item {i + 1}</label>{' '}
-              {item.item > 2 ? (
-                <button onClick={(e) => handleRemove(e, item.item)}>
-                  Remove
-                  <MdRemoveCircleOutline />
-                </button>
-              ) : null}
-            </div>
+    <>
+      <motion.div
+        variants={mainVariant}
+        animate="animate"
+        initial="initial"
+        exit="exit"
+        className="compare"
+      >
+        <h3>Add items to compare</h3>
+        <form onSubmit={handleSubmit}>
+          {data.map((item, i) => (
+            <div key={item.item} className="itemDiv">
+              <div className="twoCol">
+                <label>Item {i + 1}</label>{' '}
+                {item.item > 2 ? (
+                  <button onClick={(e) => handleRemove(e, item.item)}>
+                    Remove
+                    <MdRemoveCircleOutline />
+                  </button>
+                ) : null}
+              </div>
 
-            <div className="twoCol">
+              <div className="twoCol">
+                <div className="inputDiv">
+                  <input
+                    type="number"
+                    name="quantity"
+                    placeholder="Enter quantity"
+                    value={item.quantity}
+                    required
+                    onChange={(e) => handleChange(e, i)}
+                  />
+                  <MdProductionQuantityLimits />
+                </div>
+                {id !== 'qty' ? (
+                  <select
+                    onChange={(e) => handleChange(e, i)}
+                    required
+                    name="unit"
+                    value={item.unit}
+                  >
+                    <option value="">Unit</option>
+                    {unitsMap[id].map((unit) => (
+                      <option key={unit.name} value={unit.value}>
+                        {unit.name}
+                      </option>
+                    ))}
+                  </select>
+                ) : null}
+              </div>
+              {console.log(item.quantity, item.price)}
               <div className="inputDiv">
                 <input
+                  onChange={(e) => handleChange(e, i)}
+                  required
                   type="number"
-                  name="quantity"
-                  placeholder="Enter quantity"
-                  value={item.quantity}
-                  required
-                  onChange={(e) => handleChange(e, i)}
+                  name="price"
+                  placeholder="Enter price"
+                  value={item.price}
                 />
-                <MdProductionQuantityLimits />
+                <BiRupee />
               </div>
-              {id !== 'qty' ? (
-                <select
-                  onChange={(e) => handleChange(e, i)}
-                  required
-                  name="unit"
-                  value={item.unit}
-                >
-                  <option value="">Unit</option>
-                  {unitsMap[id].map((unit) => (
-                    <option key={unit.name} value={unit.value}>
-                      {unit.name}
-                    </option>
-                  ))}
-                </select>
-              ) : null}
             </div>
-            {console.log(item.quantity, item.price)}
-            <div className="inputDiv">
-              <input
-                onChange={(e) => handleChange(e, i)}
-                required
-                type="number"
-                name="price"
-                placeholder="Enter price"
-                value={item.price}
-              />
-              <BiRupee />
-            </div>
-          </div>
-        ))}
-        <div className="btnDivWrapper">
-          <div className="btnDiv">
-            <button onClick={handleAdd}>
-              <MdAdd /> Add More
-            </button>
-            <button type="submit">
-              <MdCompareArrows /> Compare
-            </button>
-          </div>
+          ))}
+          <button ref={btnRef} style={{ display: 'none' }} type="submit">
+            Submit
+          </button>
+        </form>
+      </motion.div>
+
+      <motion.div
+        variants={btnDivVariant}
+        animate="animate"
+        initial="initial"
+        exit="exit"
+        className="btnDivWrapper"
+      >
+        <div className="btnDiv">
+          <button onClick={handleAdd}>
+            <MdAdd /> Add More
+          </button>
+          <button onClick={() => btnRef.current.click()}>
+            <MdCompareArrows /> Compare
+          </button>
         </div>
-      </form>
-    </div>
+      </motion.div>
+    </>
   )
 }
