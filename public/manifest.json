@@ -35,10 +35,12 @@
     }
   ],
   "start_url": ".",
+
   "orientation": "portrait",
   "display": "standalone",
-  "theme_color": "#2b63dc",
   "background_color": "#ebecf0",
+  "theme_color": "#2b63dc",
+
   "categories": ["productivity"],
   "description": "A simple tool to compare product's prices and quantity, It will suggest which product is profitable.",
   "lang": "en",
