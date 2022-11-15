@@ -1,9 +1,8 @@
 import Lottie from 'lottie-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MdNavigateNext } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import homeAnimation from '../animations/productAnimation'
-import { FcStatistics } from 'react-icons/fc'
 import { motion } from 'framer-motion'
 
 const mainVariant = {
@@ -16,7 +15,7 @@ const mainVariant = {
     y: 0,
     transition: {
       type: 'spring',
-      mass: 0.35,
+      mass: 0.4,
       damping: 8,
     },
   },
@@ -75,7 +74,6 @@ export default function Home({ dispatch }) {
               animationData={homeAnimation}
             />
           </motion.span>
-          {isLoaded ? null : <FcStatistics className="modelIcon" />}
         </div>
         <form onSubmit={handleSubmit} className="homeForm">
           <select
@@ -86,7 +84,7 @@ export default function Home({ dispatch }) {
             <option value="">Choose Type</option>
             <option value="weight">Weight</option>
             <option value="volume">Volume</option>
-            <option value="qty">Quantity (Eg: 2 bag)</option>
+            <option value="pieces">Pieces (Eg: 2 bag)</option>
             <option value="distance">Distance</option>
             <option value="common">Common</option>
           </select>

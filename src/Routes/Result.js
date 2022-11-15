@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { unitDisplay, unitNorms } from './data'
 import { motion } from 'framer-motion'
 
@@ -29,7 +29,7 @@ export default function Result({ data }) {
   const [result, setResult] = useState([])
 
   // If quantity is qty
-  const isQty = id === 'qty'
+  const isQty = id === 'pieces'
   // UseEffect if no state value found redirect
   useEffect(() => {
     if (!data[0].price) {

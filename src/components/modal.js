@@ -1,5 +1,5 @@
 import { MdCancel } from 'react-icons/md'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const mainVariant = {
   initial: { opacity: 0 },
@@ -50,33 +50,79 @@ export default function Modal({ setIsModal }) {
           </p>
 
           <h3>Steps:</h3>
-          <p>
-            <ol>
-              <li>First choose product type. (Like weight,distance)</li>
-              <li>
-                After that add item quantity ,price and unit . You can choose
-                diffrent units from the select option.
-              </li>
-              <li>You can add or compare upto 5 items</li>
-              <li>Now just click compare, Finish</li>
-              <li>Enjoy.</li>
-            </ol>
-          </p>
+
+          <ol>
+            <li>First choose product type. (Like weight,distance)</li>
+            <li>
+              After that add item quantity ,price and unit . You can choose
+              diffrent units from the select option.
+            </li>
+            <li>You can add or compare upto 5 items</li>
+            <li>Now just click compare, Finish</li>
+            <li>Enjoy.</li>
+          </ol>
+
           <h3>Credits:</h3>
           <ul>
             <li>
-              <a href="https://storyset.com/online">
-                Online illustrations by Storyset
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://lottiefiles.com/65251-product-hunt-lottie-animation"
+              >
+                Animation by S M Rony
+              </a>
+            </li>
+
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com/icon/14270/water"
+              >
+                Water
+              </a>{' '}
+              icon by{' '}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com"
+              >
+                Icons8
               </a>
             </li>
             <li>
-              <a href="https://storyset.com/online">
-                Online illustrations by Storyset
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com/icon/0xW7diYXLEsn/numbers"
+              >
+                Numbers
+              </a>{' '}
+              icon by{' '}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com"
+              >
+                Icons8
               </a>
             </li>
             <li>
-              <a href="https://storyset.com/online">
-                Online illustrations by Storyset
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com/icon/cXkRPiHClzjm/weight"
+              >
+                Weight
+              </a>{' '}
+              icon by{' '}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://icons8.com"
+              >
+                Icons8
               </a>
             </li>
           </ul>

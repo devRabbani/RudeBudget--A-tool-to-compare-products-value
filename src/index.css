@@ -219,6 +219,7 @@ nav a {
   font-size: 2.5rem;
   display: flex;
   align-items: center;
+  width: fit-content;
 }
 
 footer {
@@ -261,7 +262,7 @@ footer {
 }
 
 .modalBody h3:not(:first-of-type) {
-  margin-top: 18px;
+  margin-top: 22px;
 }
 .modalBody p {
   margin: 9px 0;
@@ -308,9 +309,6 @@ footer {
   display: grid;
   /* gap: 20px; */
   overflow: hidden;
-  border: 1px solid grey;
-  padding: 10px;
-  border-radius: 7px;
 }
 
 .compare .itemDiv {

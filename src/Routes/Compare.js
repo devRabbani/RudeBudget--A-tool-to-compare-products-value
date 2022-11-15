@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import {
   MdAdd,
   MdCompareArrows,
@@ -108,7 +108,7 @@ export default function Compare({ data, dispatch }) {
                   opacity: 0,
                   x: -100,
                   height: 0,
-                  transition: { height: { delay: 0.4 } },
+                  transition: { height: { delay: 0.3 } },
                 }}
                 key={item.item}
               >
@@ -134,7 +134,7 @@ export default function Compare({ data, dispatch }) {
                       />
                       <MdProductionQuantityLimits />
                     </div>
-                    {id !== 'qty' ? (
+                    {id !== 'pieces' ? (
                       <select
                         onChange={(e) => handleChange(e, i)}
                         required

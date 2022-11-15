@@ -41,5 +41,45 @@
   "background_color": "#EBECF0",
   "categories": ["productivity"],
   "description": "A simple tool to compare product's prices and quantity, It will suggest which product is profitable.",
-  "lang": "en"
+  "lang": "en",
+  "dir": "auto",
+  "display_override": ["standalone", "minimal-ui", "fullscreen"],
+  "shortcuts": [
+    {
+      "name": "Weights",
+      "url": "/weight",
+      "description": "Compare weights units",
+      "icons": [
+        {
+          "src": "weight.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Volume",
+      "url": "/volume",
+      "description": "Compare volume or liquid units",
+      "icons": [
+        {
+          "src": "volume.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Pieces",
+      "url": "/pieces",
+      "description": "Compare pieces or units",
+      "icons": [
+        {
+          "src": "pieces.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }
