@@ -2,7 +2,7 @@ import Lottie from 'lottie-react'
 import { useState } from 'react'
 import { MdNavigateNext } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
-import homeAnimation from '../animations/productAnimation'
+import homeAnimation from '../animations/homeAnimation'
 import { motion } from 'framer-motion'
 
 const mainVariant = {
