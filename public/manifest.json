@@ -43,7 +43,6 @@
   "description": "A simple tool to compare product's prices and quantity, It will suggest which product is profitable.",
   "lang": "en",
   "dir": "auto",
-  "display_override": ["standalone", "minimal-ui", "fullscreen"],
   "shortcuts": [
     {
       "name": "Weights",
