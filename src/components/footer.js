@@ -3,7 +3,7 @@ export default function Footer() {
     <footer>
       <p>
         Developed by{' '}
-        <a href="http://canwebe.tech" target="_blank" rel="noopener noreferrer">
+        <a href="http://www.canwebe.in" target="_blank" rel="noopener noreferrer">
           CanWeBe!
         </a>
       </p>

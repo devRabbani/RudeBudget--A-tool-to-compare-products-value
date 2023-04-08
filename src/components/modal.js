@@ -38,7 +38,7 @@ export default function Modal({ setIsModal }) {
           <p>
             This app is developed by{' '}
             <a
-              href="http://canwebe.tech"
+              href="https://www.canwebe.in"
               target="_blank"
               rel="noopener noreferrer"
             >
